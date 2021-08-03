@@ -25,17 +25,13 @@
 # Ignore the Models Builder models out of date flag
 **/App_Data/Models/ood.flag
 
-umbraco
-#wwwroot/media
-wwwroot/umbraco
 
+#wwwroot/media
 .vs
 *.user
 bin
 obj
-Umbraco
 wwwroot/umbraco
 wwwroot/Media
 !wwwroot/Media/.gitkeep
 !wwwroot/Media/Web.config
-appsettings.json
