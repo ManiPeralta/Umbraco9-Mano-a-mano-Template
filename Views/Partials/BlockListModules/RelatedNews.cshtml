@@ -1,0 +1,75 @@
+﻿@inherits UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem<RelatedNews, RelatedNewsSettings>>
+
+@{
+    Settings generalSettings = (Settings)Umbraco.ContentAtRoot().DescendantsOrSelfOfType("settings").FirstOrDefault();
+    var fotoOrigen = generalSettings.BaseUrl;
+    var fotoTemporral = "salar-seco.jpg";
+
+    // Content data
+    var content = Model.Content;
+    var relatedNews = content.RelatedNewsItem;
+    var relatedNewsAny = relatedNews.Any();
+}
+
+@{
+    // Settings data
+    var settings = Model.Settings;
+
+    // Colour Settings
+    var moduleId = $"id{settings.Key}";
+    var BackgroundColour = $"#{settings.BackgroundColour}";
+    var titleColour = $"#{settings.TitleColour}";
+    var subtitleColour = $"#{settings.SubtitleTextColour}";
+    var textColour = $"#{settings.TextContentColour}";
+}
+
+<style>
+    .overlay {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    #@moduleId h3{
+        color: @titleColour;
+    }
+    #@moduleId
+    .module-bg {
+        background-color: @BackgroundColour;
+    }
+    #@moduleId h4 a {
+        color: @subtitleColour;
+    }
+    #@moduleId p {
+        color: @textColour;
+    }
+</style>
+
+
+
+@if (relatedNews != null && relatedNewsAny)
+{
+    <section id="@moduleId" class="related">
+        <div class="module-bg">
+            @foreach (var item in relatedNews)
+            {
+                NewsItem relatedItems = (NewsItem)item;
+                if (relatedItems != null && !string.IsNullOrEmpty(relatedItems.Title))
+                {
+                    var relatedContentImage = relatedItems.Thumbnail != null ? relatedItems.Thumbnail.GetLocalCropUrl("Thumbnail") : !string.IsNullOrWhiteSpace(fotoOrigen) ? $"{fotoOrigen}{fotoTemporral}" : null;
+                    var relatedContentImageAlt = relatedItems.Thumbnail != null ? relatedItems.Thumbnail.MediaItem.Name : "";
+                    <div class=" mb-4">
+                        <div class="card mb-12 box-shadow">
+                            <img class="card-img-top" alt="@relatedContentImageAlt" style="height: 225px; width: 100%; display: block;" src="@relatedContentImage" asp-append-version="true" data-holder-rendered="true">
+                            <div class="card-body ">
+                                <h4 class="display-5"><a class="text-dark" href="@relatedItems.Url()"> @relatedItems.Title</a></h4>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <p>@relatedItems.Slogan</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </section>
+}

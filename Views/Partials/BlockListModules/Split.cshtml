@@ -1,0 +1,89 @@
+﻿@inherits UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem<Split, SplitSettings>>
+
+@{
+    // content data
+    var imageModule = Model.Content.Photo;
+    string image = string.Empty;
+    string imageTitle = string.Empty;
+    foreach (var item in imageModule)
+    {
+        SplitPhoto splitPhoto = (SplitPhoto)item.Content;
+        imageTitle = splitPhoto.Title;
+        image = splitPhoto.Photo != null ? splitPhoto.Photo.GetLocalCropUrl("Medium") : "https://ichef.bbci.co.uk/news/800/cpsprodpb/30E1/production/_118831521_gettyimages-124129821.jpg";
+    }
+
+    var textModule = Model.Content.Text;
+    var textTitle = string.Empty;
+    var textSubtitle = string.Empty;
+    var textContent = string.Empty;
+    var textLink = string.Empty;
+    foreach (var item in textModule)
+    {
+        SplitText splitText = (SplitText)item.Content;
+        textTitle = splitText.Title;
+        textSubtitle = splitText.Subtitle;
+        textContent = splitText.Text.ToString();
+        textLink = splitText.Link != null ? splitText.Link.Url.ToString() : "";
+    }
+}
+@{
+    // Settings data
+    var settings = Model.Settings;
+    var reverseOrder = settings.ReverseOrder;
+
+    // Colour Settings
+    var moduleId = $"id{settings.Key}";
+    var BackgroundColour = $"#{settings.BackgroundColour}";
+    var titleColour = $"#{settings.TitleColour}";
+    var subtitleColour = $"#{settings.SubtitleTextColour}";
+    var textColour = $"#{settings.TextContentColour}";
+    //string partialPath = "Theme/Style";
+}
+
+<style>
+    .overlay {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    #@moduleId
+    .module-bg {
+        background-color: @BackgroundColour;
+    }
+    #@moduleId h2{
+        color: @titleColour;
+    }
+    #@moduleId h4 p.lead {
+        color: @subtitleColour;
+    }
+    #@moduleId p {
+        color: @textColour;
+    }
+</style>
+<section id="@moduleId" class="">
+    <div class="module-bg pt-5 pb-5 ">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md  @(reverseOrder ? "order-md-2" : "") ">
+                    @if (!string.IsNullOrEmpty(image))
+                    {
+                        <img src="@image" class="img-fluid" alt="@imageTitle" asp-append-version="true">
+                    }
+                </div>
+                <div class="col-md pt-5 pb-5">
+                    <h2>@textTitle</h2>
+                    <p class="lead">
+                        @textSubtitle
+                    </p>
+                    @Html.Raw(textContent)
+                    @if (!string.IsNullOrEmpty(textLink))
+                    {
+                        <a href="@textLink" class="btn btn-light mt-3">
+                            <i class="bi bi-chevron-right"></i> Read More
+                        </a>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</section>
