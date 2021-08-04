@@ -1,13 +1,8 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ISEoelement>
-@*
-    <ISEO> this is Models Builder accessing it via Interface. further reading link below
-    https://our.umbraco.com/documentation/reference/templating/modelsbuilder/Using-Interfaces
-*@
 
 @{
     Settings generalSettings = (Settings)Umbraco.ContentAtRoot().DescendantsOrSelfOfType("settings").FirstOrDefault();
-    var imagePath = generalSettings.Url();
-    var logo = generalSettings.Logo;
+    var imagePath = generalSettings.BaseUrl;
 
     var websiteName = generalSettings.WebsiteName;
     var favicon = generalSettings.Favicon;
@@ -18,9 +13,8 @@
     }
     else if (!string.IsNullOrWhiteSpace(imagePath))
     {
-        faviconUrl = $"{imagePath}{logo}";
+        faviconUrl = $"{imagePath}/logo.png";
     }
-
 
     var seoTitle = Model.SEotitle;
     var seoDescription = Model.SEodescription;
