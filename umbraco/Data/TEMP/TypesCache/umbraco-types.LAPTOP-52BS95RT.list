@@ -276,7 +276,6 @@ Umbraco.Cms.Core.PropertyEditors.ValueConverters.MultiUrlPickerValueConverter, U
 Umbraco.Cms.Core.PropertyEditors.ValueConverters.NestedContentManyValueConverter, Umbraco.Infrastructure, Version=9.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Cms.Core.PropertyEditors.ValueConverters.NestedContentSingleValueConverter, Umbraco.Infrastructure, Version=9.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Cms.Core.PropertyEditors.ValueConverters.RteMacroRenderingValueConverter, Umbraco.Infrastructure, Version=9.0.0.0, Culture=neutral, PublicKeyToken=null
-B4.Views.Shared.Components.Contact.ContactController, B4, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Cms.Core.PropertyEditors.IPropertyValueConverter
 
@@ -394,7 +393,6 @@ Umbraco.Cms.Web.Website.Controllers.UmbLoginController, Umbraco.Web.Website, Ver
 Umbraco.Cms.Web.Website.Controllers.UmbLoginStatusController, Umbraco.Web.Website, Version=9.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Cms.Web.Website.Controllers.UmbProfileController, Umbraco.Web.Website, Version=9.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Cms.Web.Website.Controllers.UmbRegisterController, Umbraco.Web.Website, Version=9.0.0.0, Culture=neutral, PublicKeyToken=null
-B4.Views.Shared.Components.Contact.ContactController, B4, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Cms.Core.Composing.IComposer
 

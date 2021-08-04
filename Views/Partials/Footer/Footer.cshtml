@@ -3,16 +3,17 @@
 @{
     Settings generalSettings = (Settings)Umbraco.ContentAtRoot().DescendantsOrSelfOfType("settings").FirstOrDefault();
 
-    // Theme Settings
+    // Settings Theme 
     var footerBackground = $"#{generalSettings.FooterMenuBackgroundColour?.ToString()}";
     var footerMenuColour = $"#{generalSettings.FooterMenuColour?.ToString()}";
     var footerMenuHover = $"#{generalSettings.FooterMenuHoverColour?.ToString()}";
     var footerMenuColourStyle = string.Empty;
 
-    // Menu Settings
+    // Menu Data
     var footerMenu = generalSettings.FooterMenu;
     var pageUrl = Model.UrlSegment;
 
+    // Social Media Settings
     var socialMedia = generalSettings.SocialMedia;
 }
 

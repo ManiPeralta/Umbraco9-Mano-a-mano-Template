@@ -17,13 +17,12 @@
     }
 
 
-    // Theme Settings
+    // Settings Theme 
     var background = $"#{generalSettings.MainMenuBackgroundColour?.ToString()}";
     var mainMenuColour = $"#{generalSettings.MainMenuColour?.ToString()}";
     var mainMenuHover = $"#{generalSettings.MainMenuHoverColour?.ToString()}";
-    var mainMenuColourStyle = string.Empty;
 
-    // Menu Settings
+    // Menu Data
     var mainMenu = generalSettings.MainMenu;
     var pageUrl = Model.Url();
 }
@@ -44,7 +43,8 @@
 <nav class="navbar navbar-expand-lg navbar-light navbar-bg " >
     <div class="container">
         <a class="navbar-brand" href="/">
-            <img src="@logoUrl" height="80" alt="@logoAlt" class="ml-3" />            
+            <img src="@logoUrl" height="80" alt="@logoAlt" class="ml-3" />
+            
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

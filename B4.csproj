@@ -16,6 +16,7 @@
         <Compile Remove="umbraco\Data\**" />
         <Compile Remove="umbraco\logs\**" />
         <Compile Remove="umbraco\MediaCache\**" />
+        <Compile Remove="Views\Shared\Components\**" />
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Remove="Controllers\**" />
@@ -23,6 +24,7 @@
         <EmbeddedResource Remove="umbraco\Data\**" />
         <EmbeddedResource Remove="umbraco\logs\**" />
         <EmbeddedResource Remove="umbraco\MediaCache\**" />
+        <EmbeddedResource Remove="Views\Shared\Components\**" />
     </ItemGroup>
     <ItemGroup>
         <None Remove="Controllers\**" />
@@ -30,6 +32,7 @@
         <None Remove="umbraco\Data\**" />
         <None Remove="umbraco\logs\**" />
         <None Remove="umbraco\MediaCache\**" />
+        <None Remove="Views\Shared\Components\**" />
         <None Include="config\**\*.*">
             <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
             <CopyToPublishDirectory>Always</CopyToPublishDirectory>
@@ -45,6 +48,7 @@
         <Content Remove="umbraco\Data\**" />
         <Content Remove="umbraco\logs\**" />
         <Content Remove="umbraco\MediaCache\**" />
+        <Content Remove="Views\Shared\Components\**" />
     </ItemGroup>
     <ItemGroup>
       <None Include="Views\Home.cshtml" />
@@ -70,6 +74,7 @@
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Views\MacroPartials\" />
+      <Folder Include="Views\Shared\" />
     </ItemGroup>
 
     <!-- Set this to true if ModelsBuilder mode is not InMemoryAuto-->
