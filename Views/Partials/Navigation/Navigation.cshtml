@@ -3,6 +3,19 @@
 @{ 
     Settings generalSettings = (Settings)Umbraco.ContentAtRoot().DescendantsOrSelfOfType("settings").FirstOrDefault();
     var logo = generalSettings.Logo;
+    var imagePath = generalSettings.BaseUrl;
+    var logoAlt = logo != null ? logo.MediaItem.Name : "Logo";
+
+    var logoUrl = string.Empty;
+    if (logo != null)
+    {
+        logoUrl = logo.MediaItem.Url();
+    }
+    else if (!string.IsNullOrWhiteSpace(imagePath))
+    {
+        logoUrl = $"{imagePath}/logo.png";
+    }
+
 
     // Theme Settings
     var background = $"#{generalSettings.MainMenuBackgroundColour?.ToString()}";
@@ -31,14 +44,7 @@
 <nav class="navbar navbar-expand-lg navbar-light navbar-bg " >
     <div class="container">
         <a class="navbar-brand" href="/">
-            @if (logo != null)
-            {
-                <img src="@logo.MediaItem.Url()" height="80" alt="@logo.MediaItem.Name" class="ml-3" />
-            }
-            else
-            {
-                <img src="https://raw.githubusercontent.com/ManiPeralta/u_nine_6/main/Webready/logo.png" height="80" alt="Mano a mano logo" class="ml-3" />
-            }
+            <img src="@logoUrl" height="80" alt="@logoAlt" class="ml-3" />            
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
